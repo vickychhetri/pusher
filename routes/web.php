@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Events\PushEvent;
+
+use App\Http\Controllers\PushController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,10 +17,9 @@ use App\Events\PushEvent;
 Route::get('/', function () {
     return view('m');
 });
-Route::get('/test', function () {
-    event(new PushEvent('hello world'));
-});
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/sender', function () {
+    return view('m1');
+});
+Route::get('/test', [PushController::class,'index']);
+
